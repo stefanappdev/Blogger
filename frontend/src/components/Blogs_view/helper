@@ -1,0 +1,66 @@
+const DELETE_REQUEST=async(blogURL)=>{
+      
+                  await fetch(blogURL,{method:'DELETE'})
+                  .then((resp)=>resp.status)
+                  .then((status)=>{
+                    setStatus(status)
+                    console.log(status);
+                  })}
+  
+  
+
+
+  let msg=""
+  if(status===200){
+    msg="blog sucessfully deleted"
+  }
+  else if (status===404){
+    msg="blog not found"
+
+
+
+    import React,{useState,useEffect} from 'react'
+import { useParams,useNavigate } from 'react-router-dom'
+function Blogdetails() {
+  const[status,setStatus]=useState(404);
+  const {id}=useParams();
+  const [Blog,setBlog]=useState([]);
+  let API=`http://localhost:5000/blogs/details/${id}`
+
+ 
+ 
+  useEffect(()=>{
+      fetch(API,{
+      method:'GET', 
+      'Content-Type':'application/json',
+    })
+    .then(resp=>resp.json())
+    .then(data=>{
+      
+      setBlog(prevBlog=>{
+        return[...prevBlog,data.blog]
+      })
+
+      console.log(Blog)
+    })
+
+  },[])
+
+ 
+
+  
+
+  return (
+    <div>
+
+    <h1>details of blog {Blog.title}  </h1>
+
+     
+    
+    </div>
+  )
+}
+export default Blogdetails
+  }
+    
+  

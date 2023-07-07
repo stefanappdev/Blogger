@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
  function Showblogs() {
 
 
@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
   .then(resp=> resp.json())
   .then(data=>{
     console.log(data);
-    setblogs(data.blogs);
+    setblogs(data);
     console.log(blogs);
   })
   }
@@ -26,25 +26,32 @@ import { useParams } from 'react-router-dom';
   },[])
 
  
-
-
+  
   const blog=blogs.map((blog)=>{
-    return(
-      
-      <div>
-        
-        <h1>{blog.title}</h1>
-        <p>{blog.body}</p>
-        
+    let blogUrl=`/blogs/details/${blog._id}`
 
+    return(
+      <div className='content-box'>
+        <Link key={blog._id} to={blogUrl}>
+          
+          <div>
+          
+          <h1>{blog.title}</h1>
+          <p>{blog.body}</p>
+          
+
+        </div>
+        </Link>
+
+        <br/>
+       <br/>
       </div>
-      
       
     )
   })
   
 
-  return(<div>{blog}</div>)
+  return(<div>{blogs.length===0?"No blogs yet":blog}</div>)
   
 }
 

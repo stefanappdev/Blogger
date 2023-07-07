@@ -1,6 +1,10 @@
 
 import React,{ useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import { TextField } from '@mui/material';
+import '../../styles/forms.css';
+
 function Createblog(){
   const navigate=useNavigate();
   const[formdata,setFormData]=useState({title:'',snippet:'',body:''});
@@ -43,33 +47,49 @@ function Createblog(){
 
      }
     return(
-        <form onSubmit={handleSubmit} >
+      <div className='content-box'>
+
+          <h1>Create a new blog</h1>
+
+        <form className='forms' onSubmit={handleSubmit} >
+            <div className='form-group-container'>
             <label>Title:
-                <input type="text" 
+                
+               
+
+                <input
+                className='form-group'
+                type="text" 
                 name="title" 
                 id="title"
                 value={formdata.title} 
                 onChange={handleChange} 
                 placeholder="Enter a title" 
-                />
+              />
 
             </label>
 
             <label>snippet:
-                <input 
+            <input
+                className='form-group'
                 id='snippet'
+                name='snippet'
                 type="text" 
-                name="snippet" 
                 value={formdata.snippet} 
-                placeholder=' Enter a snippet' 
+                placeholder='Enter a snippet' 
                 onChange={handleChange}
-                
                 />
+
+            
+
+
             </label>
 
             <label>
                 Body:
-                <input 
+                <textarea
+              
+                className='form-group'
                 type="text" 
                 id='body'
                 name="body" 
@@ -77,10 +97,20 @@ function Createblog(){
                 onChange={handleChange} 
                 placeholder='Enter a body' 
                 />
+
+           
             </label>
 
-            <button  type='submit'>submit</button>
+            <Button  className='form-group' color='success'  variant='contained' type='submit'>submit</Button>
+
+            </div>
+            
         </form>
+        <br/>
+        <br/>
+
+        </div>
+
     )
 }
 

@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+}
+.content-box{
+    padding-top:100px ;
+    margin: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#home,#blogs{
+    color: white;
+}
